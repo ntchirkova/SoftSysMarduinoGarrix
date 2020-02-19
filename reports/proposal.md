@@ -1,7 +1,7 @@
 # Marduino Garrix - the Arduino Synthesizer
 
 #### Samantha Young and Nina Tchirkova 
-
+Team Name: Marduino Garrix (Like Martin Garrix the EDM star, but Arduino)
 ![](/brandingphoto.png)
 
 ## Project Goals

@@ -2,6 +2,8 @@
 
 #### Samantha Young and Nina Tchirkova 
 
+![](/brandingphoto.png)
+
 ## Project Goals
 In this project we would like to make an Arduino Synthesizer. We will create a program that can generate a waveform that will correspond with a sound. In order to create these sounds the arduino will synthesize different waves of varying frequencies to make pleasing tones. These waveforms will include sine waves, triangle waves, and square waves. For our MVP we would just like to make a device that we can control what noises it outputs. The sound it outputs will be an arduino synthesised waveform. To take our project further we can create an interface that allows users to select waveforms, save generated waveforms, and then playback various saved “songs” like you would be able to play songs on an “iPod”. 
 We are excited to be working with electrical hardware integrated application of C however the main goal of this project is software focused, not circuit focused. By implementing an already existing SoftSysSynth circuit we can hit the ground running with the embedded systems side of this project. 

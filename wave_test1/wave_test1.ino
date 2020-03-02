@@ -46,16 +46,21 @@ int low = 36;
 int high = 255;
 int stride = 5;
 int counter = low;
-byte sine[] = {127, 134, 142, 150, 158, 166, 173, 181, 188, 195, 201, 207, 213, 219, 224, 229, 234, 238, 241, 245, 247, 250, 251, 252, 253, 254, 253, 252, 251, 250, 247, 245, 241, 238, 234, 229, 224, 219, 213, 207, 201, 195, 188, 181, 173, 166, 158, 150, 142, 134, 127, 119, 111, 103, 95, 87, 80, 72, 65, 58, 52, 46, 40, 34, 29, 24, 19, 15, 12, 8, 6, 3, 2, 1, 0, 0, 0, 1, 2, 3, 6, 8, 12, 15, 19, 24, 29, 34, 40, 46, 52, 58, 65, 72, 80, 87, 95, 103, 111, 119,};
+int sine_arr[] = {127, 134, 142, 150, 158, 166, 173, 181, 188, 195, 201, 207, 213, 219, 224, 229, 234, 238, 241, 245, 247, 250, 251, 252, 253, 254, 253, 252, 251, 250, 247, 245, 241, 238, 234, 229, 224, 219, 213, 207, 201, 195, 188, 181, 173, 166, 158, 150, 142, 134, 127, 119, 111, 103, 95, 87, 80, 72, 65, 58, 52, 46, 40, 34, 29, 24, 19, 15, 12, 8, 6, 3, 2, 1, 0, 0, 0, 1, 2, 3, 6, 8, 12, 15, 19, 24, 29, 34, 40, 46, 52, 58, 65, 72, 80, 87, 95, 103, 111, 119,};
 int t = 0;
-size_t len = sizeof(sine)/sizeof(sine[0]);
+size_t len = sizeof(sine_arr)/sizeof(sine_arr[0]);
+
+int sine(int freq) {
+  return sine_arr[t]*freq%250;
+}
+
 
 void loop() {
-  int button1 = digitalRead(buttonPin1);
-  int button2 = digitalRead(buttonPin2);
-  if (button2 && button1) return;
+  int buttonSaw = digitalRead(buttonPin1);
+  int buttonSine = digitalRead(buttonPin2);
+  if (buttonSine && buttonSaw) return;
 
-  if (!button1) { 
+  if (!buttonSaw) { 
     counter += stride;
     if (counter > high) {
       counter = low;
@@ -65,11 +70,11 @@ void loop() {
   }
 
 
-  if (!button2) {
+  if (!buttonSine) {
     if (t >= len) {
       t = 0;
     }
-    writeByte(sine[t]);
+    writeByte(sine(1));
     t++;
   }
 

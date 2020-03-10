@@ -74,7 +74,7 @@ void loop() {
     if (t >= len) {
       t = 0;
     }
-    writeByte(sine(1));
+    writeByte(sine(300));
     t++;
   }
 

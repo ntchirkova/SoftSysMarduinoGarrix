@@ -55,7 +55,7 @@ int getFreqFromSlider(){
   int in = 0;
   int freq = 0;
   in = analogRead(A0);
-  freq = map(in, 0, 1024, 150, 1200);
+  freq = map(in, 0, 1024, 0, 4);
   return freq;
 }
 
@@ -107,8 +107,6 @@ void loop() {
   if (!buttonSaw) { 
     writeByte(square(100));
   }
-
-
   if (!buttonSine) {
     writeByte(square(10));
   }

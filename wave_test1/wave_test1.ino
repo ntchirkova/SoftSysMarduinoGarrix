@@ -51,7 +51,7 @@ int rads = 0;
 size_t len = sizeof(sine_arr)/sizeof(sine_arr[0]);
 
 // Low freq is 1 and high freq is 10
-int square(int freq){
+int square(int freq){ // 10 to 100 is a good range for this
   if (square_count > freq) {
     square_count = 0;
     if (square_value > 0) {
@@ -60,6 +60,7 @@ int square(int freq){
       square_value = 250;
     }
   }
+  square_count++;
   return square_value;
 }
 
@@ -73,7 +74,7 @@ int sine(int freq) {
 }
 
 // Low freq is 1 and high freq is 10
-int saw(int freq) {
+int saw(int freq) { //3 is the lowest freq we can go. 23 is a fine frequency range. 
   if (saw_value > 250) {
     increase = -1;
   } else if (saw_value < 1) {
@@ -89,12 +90,12 @@ void loop() {
   // if (buttonSine && buttonSaw) return;
 
   if (!buttonSaw) { 
-    writeByte(saw(5));
+    writeByte(square(100));
   }
 
 
   if (!buttonSine) {
-    writeByte(sine(5));
+    writeByte(square(10));
   }
 
   // write to the digital pins  

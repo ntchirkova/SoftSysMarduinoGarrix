@@ -1,7 +1,7 @@
 /*
   
  Author: Allen Downey 
- 
+ slider
  Based on http://arduino.cc/en/Tutorial/AnalogInput
  Created by David Cuartielles
  modified 30 Aug 2011

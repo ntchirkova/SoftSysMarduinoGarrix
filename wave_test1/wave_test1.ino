@@ -51,8 +51,8 @@ int rads = 0;
 size_t len = sizeof(sine_arr)/sizeof(sine_arr[0]);
 
 // Low freq is 1 and high freq is 10
-int square(int freq){ // 10 to 100 is a good range for this
-  if (square_count > freq) {
+int square(int freq){
+  if (square_count > ((10-freq)+1)*10) {
     square_count = 0;
     if (square_value > 0) {
       square_value = 0;
@@ -74,13 +74,14 @@ int sine(int freq) {
 }
 
 // Low freq is 1 and high freq is 10
-int saw(int freq) { //3 is the lowest freq we can go. 23 is a fine frequency range. 
+int saw(int freq) { 
+  int m = map(freq, 1, 10, 3, 23);
   if (saw_value > 250) {
     increase = -1;
   } else if (saw_value < 1) {
     increase = 1;
   }
-  saw_value = saw_value + increase*freq;
+  saw_value = saw_value + increase*m;
   return saw_value;
 }
 

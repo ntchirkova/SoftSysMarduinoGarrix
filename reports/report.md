@@ -3,6 +3,7 @@
 #### 4/3/2020
 
 ![](/brandingphoto.png)
+This is a picture of Martin Garrix (the EDM artist) levetating arduinos.
 
 ## Project Goals
 

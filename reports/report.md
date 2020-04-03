@@ -1,4 +1,4 @@
-# Marduino Garrix
+# Marduino Garrix - An Arduino Audio Synthesizer
 #### By Samantha Young and Nina Tchirkova
 #### 4/3/2020
 

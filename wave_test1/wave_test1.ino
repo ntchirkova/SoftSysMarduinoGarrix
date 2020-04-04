@@ -1,28 +1,20 @@
 /*
-  
- Author: Allen Downey 
- slider
- Based on http://arduino.cc/en/Tutorial/AnalogInput
- Created by David Cuartielles
- modified 30 Aug 2011
- By Tom Igoe
- License: Public Domain
- 
+ Author: Nina Tchirkova and Samantha Young
+ Based on Allen Downey's Code and http://arduino.cc/en/Tutorial/AnalogInput 
  */
  
  
-int ledPin = 5;       // select the pin for the LED
 int buttonPin1 = 2;
 int buttonPin2 = 3;
+int buttonPin3 = 4;
 
 void setup() {
   Serial.begin(9600);
   
   pinMode(buttonPin1, INPUT_PULLUP);  
   pinMode(buttonPin2, INPUT_PULLUP);  
-
+  pinMode(buttonPin3, INPUT_PULLUP); 
   pinMode(ledPin, OUTPUT);
-  
   pinMode(13, OUTPUT);  
   pinMode(12, OUTPUT);  
   pinMode(11, OUTPUT);  
@@ -55,7 +47,7 @@ int getFreqFromSlider(){
   int in = 0;
   int freq = 0;
   in = analogRead(A0);
-  freq = map(in, 0, 1024, 0, 4);
+  freq = map(in, 0, 1024, 0, 11);
   return freq;
 }
 
@@ -63,7 +55,7 @@ size_t len = sizeof(sine_arr)/sizeof(sine_arr[0]);
 
 // Low freq is 1 and high freq is 10
 int square(int freq){
-  if (square_count > ((10-freq)+1)*10) {
+  if (square_count > ((10-freq)+1)*5) {
     square_count = 0;
     if (square_value > 0) {
       square_value = 0;
@@ -97,19 +89,20 @@ int saw(int freq) {
 }
 
 void loop() {
-  int buttonSaw = digitalRead(buttonPin1);
+  int buttonSquare = digitalRead(buttonPin1);
   int buttonSine = digitalRead(buttonPin2);
+  int buttonSaw = digitalRead(buttonPin3);
 
   frequency = getFreqFromSlider();
-  //Serial.println(frequency); 
-  if (buttonSine && buttonSaw) return;
-        
-  if (!buttonSaw) { 
-    writeByte(square(100));
+  if (buttonSine && buttonSaw && buttonSquare ) return;
+  if (!buttonSquare) { 
+    writeByte(square(frequency));
   }
   if (!buttonSine) {
-    writeByte(square(10));
+    writeByte(sine(frequency));
+  }
+  if (!buttonSaw) {
+    writeByte(saw(frequency));
   }
 
-  // write to the digital pins  
 }

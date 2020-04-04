@@ -1,8 +1,7 @@
 /*
  Author: Nina Tchirkova and Samantha Young
  Based on Allen Downey's Code and http://arduino.cc/en/Tutorial/AnalogInput 
- */
- 
+*/
  
 int buttonPin1 = 2;
 int buttonPin2 = 3;
@@ -14,7 +13,6 @@ void setup() {
   pinMode(buttonPin1, INPUT_PULLUP);  
   pinMode(buttonPin2, INPUT_PULLUP);  
   pinMode(buttonPin3, INPUT_PULLUP); 
-  pinMode(ledPin, OUTPUT);
   pinMode(13, OUTPUT);  
   pinMode(12, OUTPUT);  
   pinMode(11, OUTPUT);  
